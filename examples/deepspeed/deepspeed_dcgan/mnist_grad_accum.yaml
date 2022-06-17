@@ -13,7 +13,7 @@ hyperparameters:
     gradient_accumulation_steps: 4
 environment:
     image:
-        gpu: determinedai/environments:cuda-11.1-pytorch-1.9-lightning-1.5-tf-2.4-deepspeed-0.5.10-gpu-5158dec
+        gpu: determinedai/environments-dev:cuda-11.1-pytorch-1.9-tf-2.4-deepspeed-0.5.10-gpu-0.18.2
 bind_mounts:
     - host_path: /tmp
       container_path: /data

@@ -152,7 +152,7 @@ tf2_gpu_hashed:
   new: determinedai/environments:cuda-11.3-pytorch-1.10-lightning-1.5-tf-2.8-gpu-3e933ea
   old: determinedai/environments:cuda-11.3-pytorch-1.10-lightning-1.5-tf-2.8-gpu-6e45071
 tf2_gpu_versioned:
-  new: determinedai/environments:cuda-11.3-pytorch-1.10-lightning-1.5-tf-2.8-gpu-0.18.2
+  new: determinedai/environments-dev:cuda-11.3-pytorch-1.10-tf-2.8-gpu-0.18.2
   old: determinedai/environments:cuda-11.3-pytorch-1.10-lightning-1.5-tf-2.8-gpu-0.17.15
 us_east_1_agent_ami:
   new: ami-0f2974f1a8588e274
