@@ -621,6 +621,7 @@ func (a *Allocation) ResourcesStateChanged(
 					msg.ResourcesStopped.String(),
 				),
 			}))
+			ctx.Log().Warn("RESOURCES KILLED WHILE RUNNING")
 			a.Exit(ctx, "resources were killed")
 		case msg.ResourcesStopped.Failure != nil:
 			a.logger.Insert(ctx, a.enrichLog(model.TaskLog{
@@ -630,6 +631,7 @@ func (a *Allocation) ResourcesStateChanged(
 			}))
 			a.Error(ctx, *msg.ResourcesStopped.Failure)
 		default:
+			ctx.Log().Warn("DEFAULT TERMINATED STATE")
 			a.logger.Insert(ctx, a.enrichLog(model.TaskLog{
 				ContainerID: msg.ContainerIDStr(),
 				Log:         msg.ResourcesStopped.String(),
@@ -685,9 +687,11 @@ func (a *Allocation) Exit(ctx *actor.Context, reason string) (exited bool) {
 		a.terminated(ctx, reason)
 		return true
 	case a.allNonDaemonsExited():
+		ctx.Log().Warn("killing because all non daemons exited")
 		a.killedDaemons = true
 		a.kill(ctx, reason)
 	case len(a.resources.failed()) > 0:
+		ctx.Log().Warn("killing because resources have failed")
 		a.kill(ctx, reason)
 	}
 	return false
